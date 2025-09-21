@@ -1,22 +1,46 @@
 import cv2
+import numpy as np
 img1=cv2.imread(r"images\bg4.jpg",cv2.IMREAD_COLOR)
 img2=cv2.imread(r"images\bg1.jpg",cv2.IMREAD_COLOR)
 img3=cv2.imread(r"images\dot.jpg",cv2.IMREAD_COLOR)
 img4=cv2.imread(r"images\star.jpg",cv2.IMREAD_COLOR)
 cv2.imshow("img1",img1)
 cv2.imshow("img2",img2)
+#adding both images
 img5=cv2.addWeighted(img1,0.2,img2,0.8,1)
 cv2.imshow("img3",img5)
 cv2.imshow("img4",img3)
 cv2.imshow("img5",img4)
+#substratic the images
 img6=cv2.subtract(img4,img3)
 cv2.imshow("img6",img6)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-
+#resises it
 img7=cv2.imread(r"images\\pika.png",cv2.IMREAD_COLOR)
 img8=cv2.resize(img7,(200,200))
 cv2.imshow("img7",img7)
 cv2.imshow("img8",img8)
 cv2.waitKey(0)
-cv2.imshow(0)
+#ersosion of images
+img9=cv2.imread("images\\pika.png",cv2.IMREAD_COLOR)
+cv2.imshow("pika oridinal",img9)
+kernel=np.ones((5,5),np.uint8)
+img10=cv2.erode(img9,kernel)
+cv2.imshow("img10",img10)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+#bluring of image
+img11=cv2.imread("images\\pika.png",cv2.IMREAD_COLOR)
+cv2.imshow("img11",img11)
+#gaussian bluir
+img12=cv2.GaussianBlur(img11,(5,5),0)
+cv2.imshow("gaussin bluir",img12)
+#meadin bluir
+img13=cv2.medianBlur(img11,5)
+cv2.imshow("meadin bluir",img13)
+#biletrual bluring
+bilteral=cv2.bilateralFilter(img11,90,750,750)
+cv2.imshow("biliteral bluring",bilteral)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
