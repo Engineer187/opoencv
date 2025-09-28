@@ -1,0 +1,36 @@
+import cv2
+img=cv2.imread(r"images\pika.png",cv2.IMREAD_COLOR)
+cv2.imshow("pika",img)
+#line on the pic
+cor1=(0,0)
+cor2=(500,500)
+colr=(100,100,100)
+thickness=10
+img1=cv2.line(img,cor1,cor2,colr,thickness)
+cv2.imshow("line",img1)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+#rectangle
+img2=cv2.rectangle(img,cor1,cor2,colr,-1)
+cv2.imshow("line",img2)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+#circle
+radi=10
+cor3=(600,600)
+thick=30
+colr1=(10,10,200)
+img3=cv2.circle(img,cor3,radi,colr1,thickness)
+cv2.imshow("line",img3)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+#text
+cor4=(199,199)
+corl2=(225,225,225)
+font=cv2.FONT_HERSHEY_COMPLEX_SMALL
+fontscale=1
+thickness=1
+img=cv2.putText(img,"hi",cor4,font,fontscale,corl2,thickness,cv2.LINE_4)
+cv2.imshow("line",img3)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
