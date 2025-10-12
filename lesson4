@@ -1,15 +1,16 @@
 import cv2
+import numpy as np
 img=cv2.imread(r"images\pika.png",cv2.IMREAD_COLOR)
 cv2.imshow("pika",img)
 img1=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-cv2.imshow("pika1",img1)
+cv2.imshow("pika1",img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 #avraging of pixels to convert color into grey scale
 (row,col)=img.shape[0:2]
 for i in range(row):
     for j in range(col):
-        img[i,j]=int(sum(img[i,j])*0.33)
+        img[i,j]=int(np.sum(img[i, j].astype(np.uint16)) // 3)
 img=cv2.imshow("asd",img)
 #rotating a imadge
 img=cv2.imread(r"images\pika.png",cv2.IMREAD_COLOR)
@@ -18,5 +19,19 @@ M=cv2.getRotationMatrix2D((col//2,row//2),90,1)
 result=cv2.warpAffine(img,M,(col,row))
 cv2.imshow("pika2",result)
 cv2.imwrite("pika rotated.png",result)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+#bgr=hsv
+img=cv2.imread(r"images\pika.png",cv2.IMREAD_COLOR)
+cv2.imshow("xdfz",img)
+hsvimg=cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
+cv2.imshow("hsvimg",hsvimg)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+#edge detection
+img=cv2.imread(r"images\pika.png",cv2.IMREAD_GRAYSCALE)
+cv2.imshow("xdfz",img)#
+edges=cv2.Canny(img,150,250)
+cv2.imshow("edge",img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
