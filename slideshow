@@ -1,0 +1,17 @@
+import cv2
+import os
+from PIL import Image
+path="images"
+os.chdir(path)
+numberofimg=len(os.listdir("."))
+meanwidth=0
+meanheight=0
+sumw=0
+sumh=0
+for file in os.listdir("."):
+    images=Image.open(file)
+    width,height=images.size
+    
+    
+cv2.waitKey(0)
+cv2.destroyAllWindows()
