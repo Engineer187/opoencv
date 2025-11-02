@@ -8,10 +8,27 @@ meanwidth=0
 meanheight=0
 sumw=0
 sumh=0
+#calculate meanwith and mean height
 for file in os.listdir("."):
     images=Image.open(file)
     width,height=images.size
-    
-    
+    sumw=sumw+width
+    sumh=sumh+height
+meanheight=sumh//numberofimg
+meanwidth=sumw//numberofimg
+print(meanheight,meanwidth)
+#resiseing the image
+for file in os.listdir("."):
+    if file.endswith(".jpg")or file.endswith(".png")or file.endswith(".jpeg"):
+        image=Image.open(file)
+        resizeimage=image.resize((meanheight,meanwidth),Image.Resampling.LANCZOS)
+        resizeimage.save(file,"JPEG",qualty=95)
+#makeing veideo gemeration
+slideshow="slideshow"
+images=[]
+for file in os.listdir("."):
+    if file.endswith(".jpg")or file.endswith(".png")or file.endswith(".jpeg"):
+        img=Image.open(file)
+        images.apend(img) 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
