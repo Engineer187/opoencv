@@ -13,15 +13,15 @@ count=1
 while count<30:
     value,image=webcam.read()
     grey=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
-    faces=face_cascade.detectMultiScale(grey,1.3,4)
+    faces=face_cascade.detectMultiScale(grey,1.2,3)
     for (x,y,w,h) in faces :
         cv2.rectangle(image,(x,y),(x+w,y+h),(0,0,0),5)
-        face=grey[x:x+w,y:y+h]
+        face=grey[y:y+h,x:x+w]
         face_resize=cv2.resize(face,(130,100))
-        cv2.imwrite("%s/%s.png"%(path,count),face_resize)
+        cv2.imwrite(f"{path}/{count}.png", face_resize)
+        count=count+1
+        print("imiage capture")
     cv2.imshow("image",image)
     a=cv2.waitKey(10)
     if a == 27:
         break
-    count=count+1
-    print("image_capture")
