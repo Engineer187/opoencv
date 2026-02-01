@@ -1,0 +1,18 @@
+import cv2
+import os 
+import numpy as np
+vid=cv2.VideoCapture(r"opencv project\Cars.mp4")
+rec=r"opencv project\cars.xml"
+car_cascade=cv2.CascadeClassifier(rec)
+while vid.isOpened():
+    (_,img)=vid.read()
+    grey=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    cars=car_cascade.detectMultiScale(grey,1.2,2)
+    for (x,y,w,h) in cars :
+        cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,0),5)
+    cv2.imshow("cars",img)
+    key=cv2.waitKey(10)
+    if key == 27:
+        break
+
+            
